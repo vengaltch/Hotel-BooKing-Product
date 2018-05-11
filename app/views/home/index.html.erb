@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <input type="date" name="start_date" id="start_date">
+      <input type="date" name="end_date" id="end_date">
+      <select name="room_type" id="room_type">
+        <% room_types = get_room_type %>
+        <option value="">All types</option>
+        <% room_types.each do |room_type| %>
+          <option value="<%= room_type.id %>"> <%= room_type.name %></option>
+        <% end %>
+      </select>
+      <button class="btn btn-primary" id="search_rooms">Search</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <p class="no-results d-none">Sorry no rooms availble on particular Date</p>
+      <div class="results">
+        <table>
+          <thead>
+            <th>
+              room number
+            </th>
+
+            <th>
+              Cost
+            </th>
+
+            <th>
+              Room Type
+            </th>
+            <th>
+              Amenities
+            </th>
+            <th>
+              Book
+            </th>
+          </thead>
+          <tbody id="results_body">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    Search.init()
+  })
+</script>
